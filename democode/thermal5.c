@@ -96,7 +96,7 @@ int main(int argc, char* argv[]) {
     unsigned char init_command[] = {0x1B, 0x40, 0x1D, 0x21,0x00};
     send_printer_command(fd, init_command, sizeof(init_command));
 
-    char input[2048];
+    char input[20480];
     if (argc > 1) {
 	   strncpy(input, argv[1], sizeof(input) -1);
 	   input[sizeof(input) - 1] = '\0';
@@ -114,10 +114,10 @@ int main(int argc, char* argv[]) {
     		}
     }
 
-    char output[4096];
+    char output[40960];
     convertToGBK(input, output);
 
-    unsigned char command1[4096]; 
+    unsigned char command1[40960]; 
     size_t command1_len = 0;
 
     unsigned char prefix[] = { 0x1D, 0x21, 0x00};
